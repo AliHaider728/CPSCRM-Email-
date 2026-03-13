@@ -2,13 +2,13 @@ import React from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { AppLayout } from "./components/layout/AppLayout.tsx";
-import Dashboard from "./pages/Dashboard.tsx";
-import Clients from "./pages/Clients.tsx";
-import ClientDetail from "./pages/ClientDetail.tsx";
-import Emails from "./pages/Emails.tsx";
-import Team from "./pages/Team.tsx";
-import Notifications from "./pages/Notifications.tsx";
+import { AppLayout } from "./components/layout/AppLayout";
+import Dashboard from "./pages/Dashboard";
+import Clients from "./pages/Clients";
+import ClientDetail from "./pages/ClientDetail";
+import Emails from "./pages/Emails";
+import Team from "./pages/Team";
+import Notifications from "./pages/Notifications";
 
 const queryClient = new QueryClient({
   defaultOptions: {
