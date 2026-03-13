@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/Card";
 import { AlertCircle } from "lucide-react";
 import { Link } from "wouter";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (

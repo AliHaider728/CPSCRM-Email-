@@ -7,7 +7,7 @@ import {
   useAddNote,
 } from "@/lib/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/Badge";
 import {
   ArrowLeft, Building2, Mail, Phone, Calendar,

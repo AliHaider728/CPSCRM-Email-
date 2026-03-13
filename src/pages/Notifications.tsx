@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useListNotifications, useMarkNotificationRead } from "@/lib/api";
 import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Bell, MousePointerClick, MailOpen, Download, ArrowDownLeft, Check, Loader2 } from "lucide-react";
 import { formatRelative } from "@/lib/utils";
 

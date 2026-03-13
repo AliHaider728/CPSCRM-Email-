@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useListEmails } from "@/lib/api";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Search, Filter, Mail, ArrowUpRight, ArrowDownLeft, Loader2 } from "lucide-react";
 import { formatSmartDate } from "@/lib/utils";
 

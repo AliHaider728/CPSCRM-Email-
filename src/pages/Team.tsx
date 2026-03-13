@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useListTeamMembers, useTriggerOutlookSync } from "@/lib/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/Badge";
 import { Copy, RefreshCw, CheckCircle2, XCircle, Mail, Users as UsersIcon, Loader2 } from "lucide-react";
 import { getInitials, formatSmartDate } from "@/lib/utils";
