@@ -39,12 +39,12 @@ export function AppLayout({ children }: AppLayoutProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-72 bg-[hsl(var(--sidebar-bg))] text-[hsl(var(--sidebar-fg))] flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] lg:translate-x-0 lg:static",
+          "fixed inset-y-0 left-0 z-50 w-72 bg-sidebar-bg text-sidebar-fg flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
         <div className="h-20 flex items-center px-8 font-display text-2xl font-bold tracking-tight border-b border-white/10">
-          <div className="w-8 h-8 rounded-xl bg-[hsl(var(--sidebar-accent))] flex items-center justify-center mr-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+          <div className="w-8 h-8 rounded-xl bg-sidebar-accent flex items-center justify-center mr-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
             <Mail className="w-5 h-5 text-white" />
           </div>
           Nexus<span className="text-blue-400 font-light">CRM</span>
@@ -90,7 +90,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 
         <div className="p-6 border-t border-white/10">
           <div className="flex items-center p-3 rounded-xl bg-white/5 border border-white/10">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-inner">
+            <div className="w-10 h-10 rounded-full bg-linear-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-inner">
               JS
             </div>
             <div className="ml-3">
