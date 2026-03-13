@@ -3,9 +3,9 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowDownLeft, Mail, MousePointerClick, Users, RefreshCw, BarChart3, TrendingUp, AlertCircle } from "lucide-react";
 import { useGetStatsOverview } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/Badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Badge } from "@/components/ui/Badge.tsx";
 import { formatRelative, getInitials } from "@/lib/utils";
 
 export default function Dashboard() {

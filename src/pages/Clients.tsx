@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useListClients, useCreateClient } from "@/lib/api";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/Badge";
-import { Input } from "@/components/ui/input";
-import { Modal } from "@/components/ui/Modal";
+import { Card, CardContent } from "@/components/ui/Card.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Badge } from "@/components/ui/Badge.tsx";
+import { Input } from "@/components/ui/input.tsx";
+import { Modal } from "@/components/ui/Modal.tsx";
 import { Search, Plus, Building2, Phone, Mail, ChevronRight, Loader2 } from "lucide-react";
 import { formatSmartDate, getInitials } from "@/lib/utils";
 

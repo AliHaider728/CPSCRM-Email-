@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useListNotifications, useMarkNotificationRead } from "@/lib/api";
-import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/Card.tsx";
+import { Button } from "@/components/ui/button.tsx";
 import { Bell, MousePointerClick, MailOpen, Download, ArrowDownLeft, Check, Loader2 } from "lucide-react";
-import { formatRelative } from "@/lib/utils";
+import { formatRelative } from "@/lib/utils.ts";
 
 export default function Notifications() {
   const { data, isLoading, refetch } = useListNotifications();

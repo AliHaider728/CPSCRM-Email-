@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useListTeamMembers, useTriggerOutlookSync } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/Badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Badge } from "@/components/ui/Badge.tsx";
 import { Copy, RefreshCw, CheckCircle2, XCircle, Mail, Users as UsersIcon, Loader2 } from "lucide-react";
-import { getInitials, formatSmartDate } from "@/lib/utils";
+import { getInitials, formatSmartDate } from "@/lib/utils.ts";
 
 export default function Team() {
   const { data, isLoading } = useListTeamMembers();

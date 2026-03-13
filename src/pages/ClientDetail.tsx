@@ -6,9 +6,9 @@ import {
   useGetClientTimeline,
   useAddNote,
 } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/Badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Badge } from "@/components/ui/Badge.tsx";
 import {
   ArrowLeft, Building2, Mail, Phone, Calendar,
   ArrowUpRight, ArrowDownLeft, StickyNote,

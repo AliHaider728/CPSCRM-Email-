@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useListEmails } from "@/lib/api";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/Card.tsx";
+import { Badge } from "@/components/ui/Badge.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Input } from "@/components/ui/input.tsx";
 import { Search, Filter, Mail, ArrowUpRight, ArrowDownLeft, Loader2 } from "lucide-react";
 import { formatSmartDate } from "@/lib/utils";
 
@@ -62,7 +62,7 @@ export default function Emails() {
                   />
                   <div className="p-5 flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
                     {/* Fixed: w-[250px] instead of min-w-62.5 */}
-                    <div className="flex items-center gap-4 w-full sm:w-[250px]">
+                    <div className="flex items-center gap-4 w-full sm:w-62.5">
                       <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500">
                         {email.direction === "outbound" ? (
                           <ArrowUpRight className="w-5 h-5 text-blue-600" />
