@@ -1,13 +1,38 @@
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-// ─── Axios Instance ────────────────────────────────────────────────────────────
+// ─── Axios Instance 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:4000/api",
+  baseURL:import.meta.env.VITE_API_URL || "http://localhost:4000/api",
   headers: { "Content-Type": "application/json" },
 });
 
-// ─── Types ─────────────────────────────────────────────────────────────────────
+// ─── Helper: normalize MongoDB _id → id 
+function normalize<T>(obj: any): T {
+  if (!obj) return obj;
+  if (Array.isArray(obj)) return obj.map(normalize) as any;
+  const { _id, __v, ...rest } = obj;
+  return { id: String(_id ?? rest.id), ...rest } as T;
+}
+
+function normalizeResponse<T>(data: any): T {
+  if (Array.isArray(data)) return data.map(normalize) as any;
+  const result: any = {};
+  for (const key of Object.keys(data)) {
+    result[key] = Array.isArray(data[key])
+      ? data[key].map(normalize)
+      : typeof data[key] === "object" && data[key] !== null && key !== "recentActivity"
+      ? normalize(data[key])
+      : data[key];
+  }
+  // Handle recentActivity separately (array of objects)
+  if (data.recentActivity) {
+    result.recentActivity = data.recentActivity.map(normalize);
+  }
+  return result as T;
+}
+
+// ─── Types ─────────
 export interface Client {
   id: string;
   name: string;
@@ -98,24 +123,24 @@ export interface StatsOverview {
   recentActivity: TimelineEntry[];
 }
 
-// ─── Stats ─────────────────────────────────────────────────────────────────────
+// ─── Stats ─────────
 export function useGetStatsOverview() {
   return useQuery<StatsOverview>({
     queryKey: ["stats", "overview"],
     queryFn: async () => {
       const { data } = await api.get("/stats/overview");
-      return data;
+      return normalizeResponse<StatsOverview>(data);
     },
   });
 }
 
-// ─── Clients ───────────────────────────────────────────────────────────────────
+// ─── Clients ───────
 export function useListClients(params?: { search?: string }) {
   return useQuery<{ clients: Client[] }>({
     queryKey: ["clients", params],
     queryFn: async () => {
       const { data } = await api.get("/clients", { params });
-      return data;
+      return normalizeResponse<{ clients: Client[] }>(data);
     },
   });
 }
@@ -125,7 +150,8 @@ export function useGetClient(id: string) {
     queryKey: ["clients", id],
     queryFn: async () => {
       const { data } = await api.get(`/clients/${id}`);
-      return data;
+      // Backend may return client directly or wrapped in { client: ... }
+      return normalize<Client>(data.client ?? data);
     },
     enabled: !!id,
   });
@@ -136,7 +162,7 @@ export function useCreateClient() {
   return useMutation({
     mutationFn: async ({ data }: { data: Partial<Client> }) => {
       const res = await api.post("/clients", data);
-      return res.data;
+      return normalize<Client>(res.data.client ?? res.data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["clients"] });
@@ -144,13 +170,13 @@ export function useCreateClient() {
   });
 }
 
-// ─── Timeline ─────────────────────────────────────────────────────────────────
+// ─── Timeline ─────
 export function useGetClientTimeline(clientId: string, params?: { type?: string }) {
   return useQuery<{ entries: TimelineEntry[]; total: number }>({
     queryKey: ["timeline", clientId, params],
     queryFn: async () => {
       const { data } = await api.get(`/clients/${clientId}/timeline`, { params });
-      return data;
+      return normalizeResponse<{ entries: TimelineEntry[]; total: number }>(data);
     },
     enabled: !!clientId,
   });
@@ -169,24 +195,24 @@ export function useAddNote() {
   });
 }
 
-// ─── Emails ───────────────────────────────────────────────────────────────────
+// ─── Emails ───────
 export function useListEmails(params?: { clientId?: string; direction?: string }) {
   return useQuery<{ emails: Email[] }>({
     queryKey: ["emails", params],
     queryFn: async () => {
       const { data } = await api.get("/emails", { params });
-      return data;
+      return normalizeResponse<{ emails: Email[] }>(data);
     },
   });
 }
 
-// ─── Team ─────────────────────────────────────────────────────────────────────
+// ─── Team ─────────
 export function useListTeamMembers() {
   return useQuery<{ members: TeamMember[] }>({
     queryKey: ["team"],
     queryFn: async () => {
       const { data } = await api.get("/team");
-      return data;
+      return normalizeResponse<{ members: TeamMember[] }>(data);
     },
   });
 }
@@ -205,13 +231,13 @@ export function useTriggerOutlookSync() {
   });
 }
 
-// ─── Notifications ────────────────────────────────────────────────────────────
+// ─── Notifications 
 export function useListNotifications() {
   return useQuery<{ notifications: Notification[] }>({
     queryKey: ["notifications"],
     queryFn: async () => {
       const { data } = await api.get("/notifications");
-      return data;
+      return normalizeResponse<{ notifications: Notification[] }>(data);
     },
   });
 }
