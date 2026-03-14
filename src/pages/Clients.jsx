@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "wouter";
 import { useListClients, useCreateClient } from "../lib/api.js";
-import { Card, CardContent } from "../components/ui/Card.jsx";
-import { Button } from "../components/ui/Button.jsx";
-import { Badge } from "../components/ui/Badge.jsx";
-import { Input } from "../components/ui/Input.jsx";
-import { Modal } from "../components/ui/Modal.jsx";
-import { Spinner } from "../components/ui/Spinner.jsx";
+import { Card, CardContent } from "../components/ui/card.jsx";
+import { Button } from "../components/ui/button.jsx";
+import { Badge } from "../components/ui/badge.jsx";
+import { Input } from "../components/ui/input.jsx";
+import { Modal } from "../components/ui/modal.jsx";
+import { Spinner } from "../components/ui/spinner.jsx";
 import { Search, Plus, Building2, Phone, Mail, ChevronRight } from "lucide-react";
 import { formatSmartDate, getInitials } from "../lib/utils.js";
 
@@ -26,7 +26,7 @@ export default function Clients() {
       { onSuccess: () => setModalOpen(false) }
     );
   };
-  
+
 
   return (
     <div>
