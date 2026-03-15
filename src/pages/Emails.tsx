@@ -9,6 +9,7 @@ import { ComposeEmailModal } from "../components/layout/ComposeEmailModal.jsx";
 import { Search, Mail, ArrowUpRight, ArrowDownLeft, Filter, X, ChevronDown } from "lucide-react";
 import { formatSmartDate } from "../lib/utils.js";
 
+
 const DIRECTIONS = [
   { value: "all",      label: "All emails" },
   { value: "outbound", label: "Sent" },

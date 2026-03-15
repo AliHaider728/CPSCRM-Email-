@@ -9,6 +9,7 @@ import { Spinner } from "../components/ui/Spinner.jsx";
 import { ComposeEmailModal } from "../components/layout/ComposeEmailModal.jsx";
 import { formatRelative } from "../lib/utils.js";
 
+
 function StatCard({ title, value, icon: Icon, colorClass, bgClass, delay }) {
   return (
     <div style={{ animation: `fadeUp 0.5s ease ${delay}s both` }}>
